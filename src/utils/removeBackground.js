@@ -1,6 +1,17 @@
 import * as bodyPix from "@tensorflow-models/body-pix";
 import "@tensorflow/tfjs";
+import heic2any from "heic2any";
 
+// Convert HEIC image to JPEG if necessary
+async function convertHEICtoJPG(file) {
+    if (file.type === "image/heic" || file.type === "image/heif") {
+        const blob = await heic2any({ blob: file, toType: "image/jpeg" });
+        return new File([blob], file.name.replace(/\.heic$/, ".jpg"), { type: "image/jpeg" });
+    }
+    return file;
+}
+
+// Load and process the image
 async function removeBackground(imageElement) {
     const net = await bodyPix.load();
     const segmentation = await net.segmentPerson(imageElement);
@@ -24,4 +35,18 @@ async function removeBackground(imageElement) {
     return canvas.toDataURL("image/png"); // Convert to PNG with transparent background
 }
 
-export default removeBackground;
+// Handle file input and process the image
+document.getElementById("fileInput").addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const convertedFile = await convertHEICtoJPG(file);
+    const image = new Image();
+    
+    image.onload = async () => {
+        const result = await removeBackground(image);
+        document.getElementById("output").src = result; // Display processed image
+    };
+
+    image.src = URL.createObjectURL(convertedFile);
+});
