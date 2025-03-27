@@ -5,8 +5,8 @@ import heic2any from "heic2any";
 // Convert HEIC image to JPEG if necessary
 async function convertHEICtoJPG(file) {
     if (file.type === "image/heic" || file.type === "image/heif") {
-        const blob = await heic2any({ blob: file, toType: "image/jpeg" });
-        return new File([blob], file.name.replace(/\.heic$/, ".jpg"), { type: "image/jpeg" });
+        const blob = await heic2any({ blob: file, toType: "image/jpg" });
+        return new File([blob], file.name.replace(/\.heic$/, ".jpg"), { type: "image/jpg" });
     }
     return file;
 }
