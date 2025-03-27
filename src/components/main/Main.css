@@ -1,0 +1,329 @@
+/* Main content section */
+* {
+    margin: 0;
+    padding: 0; /* Prevents grabbing cursor behavior */
+}
+html, body {
+    overscroll-behavior: none; /* Prevents drag down bounce effect */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+
+.main-wrapper {
+    margin-top: 73px;
+    min-height: calc(100vh - 80px);
+    padding: 0;
+    width: 100%;
+    
+    
+    /* background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%); */
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+}
+  /* Add these styles */
+.upload-interface {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .result-container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .image-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 800px;
+  }
+  
+  .comparison-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .download-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  
+  .download-btn:hover {
+    background: #45a049;
+  }
+  
+  
+  .upload-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+  }
+  
+/* Centered container matching nav width */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 103px 99px;
+    background: #ffffff;
+    border-radius: 8px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    display: flex
+    
+;
+    gap: 40px;
+    align-items: flex-start;
+    /* background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%); */
+    background: transparent;
+    justify-content: space-between;
+}
+
+.main-container .img {
+    justify-items: center;
+    gap: 0px;
+    display: flex
+;
+    flex-direction: column;
+    flex: 1;
+}
+
+.img img {
+    height: 266px;
+    width: 266px;
+    border-radius: 14px;
+}
+
+.img .p1 {
+    font-size: 51px;
+    max-width: 359px;
+    font-weight: 900;
+    color: #454545;
+}
+
+.sub-container {
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 43px;
+    
+    top: 100px;
+    
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.upload-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.upload-btn:hover {
+    background: #2563eb;
+}
+
+.upload-btn:active {
+    transform: scale(0.98);
+}
+
+.drop-text {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+.main-cont {
+    padding: 20px;
+    background: transparent;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.cont {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrolling if the image is too large */
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-items: center;
+}
+
+.cont img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fully covers the container */
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.cont:hover img {
+    transform: scale(1.02);
+}
+
+/* If you need specific aspect ratio */
+
+
+.cont p {
+    font-size: 56px;
+    font-weight: 700;
+    margin: 0;
+    color: #333;
+    align-self: center;
+    margin-bottom: 47px;
+}
+
+
+.cont ul {
+    display: flex
+;
+    gap: 59px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    align-self: center;
+}
+
+/* Simplified version */
+.cont ul li {
+    background: transparent;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.cont ul li:hover {
+    background: #fff;
+    box-shadow: none;
+}
+
+.cont ul li.active {
+    background: linear-gradient(160deg, rgb(0, 147, 233) 0%, rgb(128, 208, 199) 100%); /* Highlight for selected category */
+    color: white;
+     /* Subtle glow effect */
+}
+
+.cont ul li.active:hover {
+    background: linear-gradient(160deg, rgb(0, 147, 233) 0%, rgb(128, 208, 199) 100%); /* Slightly darker blue on hover */
+}
+
+
+/* For the nested container */
+.cont > .cont {
+    height: 453px;
+    width: 896px;
+    margin-top: 30px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 63px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 768px) {
+    .main-wrapper {
+        margin-top: 60px;
+        padding: 20px 15px;
+    }
+    
+    
+    .main-container {
+        padding: 0px 15px;
+        margin-top: 41px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    
+        .sub-container {
+            width: 250px;
+            height: 250px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 34px;
+            position: sticky;
+            top: 100px;
+            align-self: center;
+            background-color: white;
+        }
+    
+    .img img {
+        height: auto;
+        max-height: 266px;
+    }
+    .main-container .img {
+        justify-items: center;
+        gap: 0px;
+        display: flex
+    ;
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+    }
+    .img .p1 {
+        font-size: 47px;
+        max-width: 359px;
+        font-weight: 900;
+        color: #454545;
+        /* align-self: center; */
+        /* justify-self: center; */
+        text-align: center;
+    }
+    .cont ul {
+        display: flex
+    ;
+        gap: 6px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        align-self: center;
+    }
+    .cont p {
+        font-size: 56px;
+        font-weight: 700;
+        margin: 0;
+        color: #333;
+        align-self: center;
+        margin-bottom: 3px;
+        margin-top: 76px;
+    }
+    .cont {
+        position: relative;
+        width: 100%;
+        height: 72vh;
+        overflow: hidden;
+        display: flex
+    ;
+        flex-direction: column;
+        gap: 1px;
+        align-items: center;
+    }
+}
