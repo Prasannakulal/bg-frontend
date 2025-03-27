@@ -11,7 +11,7 @@ async function convertHEICtoJPG(file) {
     return file;
 }
 
-// Load and process the image
+// Remove background function
 async function removeBackground(imageElement) {
     const net = await bodyPix.load();
     const segmentation = await net.segmentPerson(imageElement);
@@ -35,18 +35,5 @@ async function removeBackground(imageElement) {
     return canvas.toDataURL("image/png"); // Convert to PNG with transparent background
 }
 
-// Handle file input and process the image
-document.getElementById("fileInput").addEventListener("change", async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const convertedFile = await convertHEICtoJPG(file);
-    const image = new Image();
-    
-    image.onload = async () => {
-        const result = await removeBackground(image);
-        document.getElementById("output").src = result; // Display processed image
-    };
-
-    image.src = URL.createObjectURL(convertedFile);
-});
+// Export the function as default
+export default removeBackground;
